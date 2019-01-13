@@ -46,7 +46,8 @@ function prepare (file) {
       .replace('{spy}', spy)
       .replace('{test}', test)
 
-    child.spawn(node, ['-e', script], opts)
+    var runner = child
+      .spawn(node, ['-e', script], opts)
       .once('error', done)
       .once('close', function (code) {
         done(null, code)
@@ -54,9 +55,14 @@ function prepare (file) {
       .on('message', function (message) {
         if (!code && message[id]) code = 1
       })
-      .stderr.on('data', function (buf) {
-        process.stderr.write(prefix + buf)
-      })
+
+    runner.stdout.on('data', function (buf) {
+      process.stdout.write(prefix + buf)
+    })
+
+    runner.stderr.on('data', function (buf) {
+      process.stderr.write(prefix + buf)
+    })
   }
 }
 
