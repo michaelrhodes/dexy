@@ -7,6 +7,7 @@ var child = require('child_process')
 var random = require('math-random')
 var parallel = require('run-parallel-limit')
 var template = read('script.template')
+var spy = resolve('console-spy')
 
 var code = 0
 var node = process.argv[0]
@@ -42,6 +43,7 @@ function prepare (file) {
 
     var script = template
       .replace('{id}', id)
+      .replace('{spy}', spy)
       .replace('{test}', test)
 
     child.spawn(node, ['-e', script], opts)
@@ -56,6 +58,12 @@ function prepare (file) {
         process.stderr.write(prefix + buf)
       })
   }
+}
+
+function resolve (module) {
+  return require.resolve(module, {
+    paths: [path.join(__dirname, 'node_modules')]
+  })
 }
 
 function read (filename) {
