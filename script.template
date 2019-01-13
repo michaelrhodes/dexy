@@ -1,0 +1,7 @@
+var spy = require('console-spy')()
+
+spy.on('assert', function (ok, message) {
+  if (!ok) process.send({ '{id}': true })
+})
+
+require('{test}')
