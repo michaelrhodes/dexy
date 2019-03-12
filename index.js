@@ -1,28 +1,26 @@
 module.exports = dexy
 
 function dexy () {
-  var current = -1
+  var current = false
   var subtests = 0
   var queue = []
 
   return test
 
   function test (fn) {
-    ~current ?
-      (queue.splice(current + subtests++, 0, fn)) :
+    current ?
+      (queue.splice(subtests++, 0, fn)) :
       (queue.push(fn), run())
   }
 
   function run () {
-    if (~current) return
-
     var test = queue.shift()
-    current = test ? 0 : -1
+    current = !!test
     subtests = 0
 
-    test && test(function () {
+    current && test(function () {
       setTimeout(function () {
-        run(current = -1)
+        run(current = false)
       })
     })
   }
