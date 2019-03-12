@@ -1,33 +1,29 @@
 module.exports = dexy
 
 function dexy () {
-  var timeout = null
-  var test = null
+  var current = -1
+  var subtests = 0
   var queue = []
 
-  return function (name, run) {
-    queue.push({ name, run })
-    start(runner)
+  return test
+
+  function test (fn) {
+    ~current ?
+      (queue.splice(current + subtests++, 0, fn)) :
+      (queue.push(fn), run())
   }
 
-  function runner () {
-    try {
-      test = queue.shift()
-      test && test.run(function (result) {
-        console.assert(result, test.name)
-        start(runner, test = null)
+  function run () {
+    if (~current) return
+
+    var test = queue.shift()
+    current = test ? 0 : -1
+    subtests = 0
+
+    test && test(function () {
+      setTimeout(function () {
+        run(current = -1)
       })
-    }
-    catch (err) {
-      console.assert(false, test.name, err)
-      start(runner, test = null)
-    }
-  }
-
-  function start (runner) {
-    if (test) return
-    if (!queue.length) return
-    clearTimeout(timeout)
-    timeout = setTimeout(runner)
+    })
   }
 }
