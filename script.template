@@ -1,9 +1,9 @@
-var spy = require('{spy}')()
+var {id} = require('{spy}')()
 
-spy.assert = function (ok, message) {
+{id}.assert = function (ok) {
   if (!ok) process.send({ '{id}': true })
 }
 
-spy.enable()
+{id}.enable()
 
 require('{test}')

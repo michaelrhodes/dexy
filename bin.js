@@ -42,9 +42,9 @@ function prepare (file) {
       .substr(2)
 
     var script = template
-      .replace('{id}', id)
-      .replace('{spy}', spy)
-      .replace('{test}', test)
+      .replace(/{id}/g, id)
+      .replace(/{spy}/, spy)
+      .replace(/{test}/, test)
 
     var runner = child
       .spawn(node, ['-e', script], opts)
