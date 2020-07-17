@@ -52,8 +52,8 @@ function prepare (file) {
       .once('close', function (code) {
         done(null, code)
       })
-      .on('message', function (message) {
-        if (!code && message[id]) code = 1
+      .on('message', function (msg) {
+        if (!code && msg[id]) code = 1
       })
 
     runner.stdout.on('data', function (buf) {

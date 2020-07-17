@@ -6,7 +6,7 @@
   "bin": "bin.js",
   "license": "MIT",
   "dependencies": {
-    "console-spy": "^2.0.0",
+    "console-spy": "^3.0.0",
     "math-random": "^1.0.2",
     "run-parallel-limit": "^1.0.5"
   }
