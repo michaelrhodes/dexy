@@ -1,9 +1,7 @@
-var {id} = require('{spy}')()
-
-{id}.assert = function (ok) {
-  if (!ok) process.send({ '{id}': true })
-}
-
-{id}.enable()
+var {id} = require('{spy}')(function () {
+  this.assert = function (ok) {
+    if (!ok) process.send({ '{id}': true })
+  }
+})
 
 require('{test}')

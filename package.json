@@ -6,8 +6,8 @@
   "bin": "bin.js",
   "license": "MIT",
   "dependencies": {
-    "console-spy": "^3.0.0",
-    "math-random": "^2.0.0",
+    "console-spy": "^4.0.0",
+    "math-random": "^2.0.1",
     "run-parallel-limit": "^1.0.5"
   }
 }
