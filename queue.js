@@ -1,6 +1,6 @@
-module.exports = dexy
+module.exports = queue
 
-function dexy () {
+function queue () {
   var running = false
   var subtests = 0
   var queue = []

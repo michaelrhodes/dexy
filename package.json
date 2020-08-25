@@ -2,7 +2,7 @@
   "name": "dexy",
   "author": "Michael Rhodes",
   "version": "1.0.6",
-  "main": "index.js",
+  "main": "queue.js",
   "bin": "bin.js",
   "license": "MIT",
   "dependencies": {

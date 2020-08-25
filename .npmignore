@@ -1,4 +1,5 @@
 *
-!script.template
-!index.js
 !bin.js
+!equal.js
+!queue.js
+!script.template
