@@ -1,4 +1,5 @@
 *
+!assert.js
 !bin.js
 !equal.js
 !queue.js
