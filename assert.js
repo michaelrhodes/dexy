@@ -7,8 +7,8 @@ function assert (name, a, b) {
 }
 
 function values (a, b) {
-  return JSON.stringify({
-    expected: a,
-    actual: b
-  })
+  return '(' +
+    'wanted: ' + JSON.stringify(b) + '; ' +
+    'got: ' + JSON.stringify(a) +
+  ')'
 }
