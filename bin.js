@@ -5,7 +5,7 @@ var os = require('os')
 var path = require('path')
 var child = require('child_process')
 var random = require('math-random')
-var parallel = require('run-parallel-limit')
+var parallel = require('run/parallel')
 var template = read('script.template')
 var spy = resolve('console-spy')
 
@@ -20,7 +20,7 @@ var opts = {
   stdio: ['ipc']
 }
 
-parallel(files.map(prepare), limit, function (err, codes) {
+parallel(limit, files.map(prepare), function (err, codes) {
   if (err) console.error(err)
   if (err && !code) code = 1
   process.exit(codes.filter(nonzero)[0] || code)

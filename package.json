@@ -7,6 +7,6 @@
   "dependencies": {
     "console-spy": "^4.0.0",
     "math-random": "^2.0.1",
-    "run-parallel-limit": "^1.0.5"
+    "run": "https://pkg.mkr.sx/run/1.0.0.tgz"
   }
 }
